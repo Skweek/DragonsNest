@@ -1,5 +1,6 @@
 package com.mrskweek.testapp;
 
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 /**
@@ -15,7 +16,7 @@ public class GameLoop extends Thread{
     private DragonScreen mainScreen;
 
     public void Start(){
-        running = true;
+        running = true; start();
     }
     public void Stop(){
         running = false;
@@ -30,10 +31,14 @@ public class GameLoop extends Thread{
 
             //update all dragons
             for (int i = 0; i < 6; ++i) {
-                mainScreen.dragonsList[i].UpdateDragon(0.00016f);
+                mainScreen.dragonsList[i].Update(mainScreen.gameTimer.GetDelta());
             }
+
             ProgressBar dragonHunger = (ProgressBar) mainScreen.findViewById(R.id.dragon_hunger);
             dragonHunger.setProgress(mainScreen.currentDragon.GetHunger());
+            //update training button
+            Button dragonTraining = (Button) mainScreen.findViewById(R.id.button_train);
+            //dragonTraining.setEnabled(mainScreen.currentDragon.GetTrainable());
         }
     }
 }

@@ -7,16 +7,22 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.*;
+import java.util.Timer;
+
 /**
  * Created by Skweek on 16/12/2014.
  */
 public class Dragon {
+    private java.util.Timer hungerTimer;
+    private long hungerInterval;
+
     private String sDragonName;
     private int iDragonLevel;
     private int iDragonHealth;
     private int iDragonImage;
     private int iDragonHunger;
-    private float hungerTimer;
+    private boolean bCanTrain;
 
     public Dragon(String sDragonName, int iDragonLevel, int iDragonHealth, int iDragonImage) {
         this.sDragonName = sDragonName;
@@ -26,7 +32,19 @@ public class Dragon {
 
         // defaults
         this.iDragonHunger = 100;
-        this.hungerTimer = 0.f;
+        this.bCanTrain = true;
+        this.hungerInterval = 100;
+
+        //timer task for hunger
+        TimerTask hunger = new TimerTask() {
+            @Override
+            public void run() {
+                if(iDragonHunger < 0) iDragonHunger = 0;
+                else iDragonHunger--;
+            }
+        };
+        this.hungerTimer = new Timer();
+        this.hungerTimer.scheduleAtFixedRate(hunger, this.hungerInterval, this.hungerInterval);
     }
 
     public void SetName(String sName){ this.sDragonName = sName; }
@@ -39,17 +57,15 @@ public class Dragon {
     public int GetImage(){ return this.iDragonImage; }
 
     public int GetHunger(){ return this.iDragonHunger; }
+    public boolean GetTrainable(){ return this.bCanTrain; }
 
-    public void UpdateDragon(float fDelta){
-        this.hungerTimer += fDelta;
+    public void Update(float fDelta){
+        if(iDragonHunger == 0) bCanTrain = false;
+        else bCanTrain = true;
+    }
 
-        //every 5 seconds take hunger down 1%
-        if(this.hungerTimer > 5.0f){
-            this.iDragonHunger--;
-            if(this.iDragonHunger < 0){ this.iDragonHunger = 0; }
-            this.hungerTimer = 0.f;
-        }
-
+    public void Feed(){
+        this.iDragonHunger = this.iDragonHunger + 5;
     }
 
 }

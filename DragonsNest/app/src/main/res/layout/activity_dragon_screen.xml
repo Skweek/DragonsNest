@@ -104,7 +104,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Feed Dragon"
-                android:id="@+id/button_feed" />
+                android:id="@+id/button_feed"
+                android:onClick="FeedDragon"/>
         </TableRow>
 
         <TableRow
@@ -116,7 +117,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Train Dragon"
-                android:id="@+id/button_train" />
+                android:id="@+id/button_train"
+                android:enabled="true" />
         </TableRow>
 
     </TableLayout>
@@ -142,7 +144,7 @@
                 android:layout_column="0" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/dragonName"
@@ -167,7 +169,7 @@
                 android:layout_column="0" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/dragonLevel"
@@ -191,7 +193,7 @@
                 android:layout_column="0" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/dragonHealth"
@@ -216,10 +218,11 @@
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/dragon_hunger"
-                android:progress="50" />
+                android:progress="50"
+                android:layout_marginLeft="25dp" />
 
         </TableRow>
 
