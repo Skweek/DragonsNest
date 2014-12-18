@@ -3,6 +3,12 @@
 
     <string name="app_name">Dragon\'s Nest</string>
     <string name="dragon_descriptor">dragon 1</string>
-    <string name="DragonView_Descriptor" />
+    <string name="DragonView_Descriptor"></string>
+    <string name="title_activity_dragon_training">dragonTraining</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
