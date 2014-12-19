@@ -1,12 +1,13 @@
 package com.mrskweek.testapp;
 
+import android.app.Activity;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
 /**
  * Created by Skweek on 18/12/2014.
  */
-public class GameLoop extends Thread{
+public class GameLoop extends Thread {
 
     public GameLoop(DragonScreen view){
            mainScreen = view;
@@ -34,11 +35,23 @@ public class GameLoop extends Thread{
                 mainScreen.dragonsList[i].Update(mainScreen.gameTimer.GetDelta());
             }
 
-            ProgressBar dragonHunger = (ProgressBar) mainScreen.findViewById(R.id.dragon_hunger);
-            dragonHunger.setProgress(mainScreen.currentDragon.GetHunger());
-            //update training button
-            Button dragonTraining = (Button) mainScreen.findViewById(R.id.button_train);
-            //dragonTraining.setEnabled(mainScreen.currentDragon.GetTrainable());
+
+            //update the UI
+            mainScreen.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    //dragon hunger
+                    ProgressBar dragonHunger = (ProgressBar) mainScreen.findViewById(R.id.dragon_hunger);
+                    dragonHunger.setProgress(mainScreen.currentDragon.GetHunger());
+
+                    //training button
+                    Button dragonTraining = (Button) mainScreen.findViewById(R.id.button_train);
+                    if(mainScreen.currentDragon.GetTrainable()) dragonTraining.setEnabled(true);
+                    else dragonTraining.setEnabled(false);
+                }
+            });
+
+
         }
     }
 }

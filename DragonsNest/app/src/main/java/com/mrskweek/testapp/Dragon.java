@@ -60,7 +60,9 @@ public class Dragon {
     public boolean GetTrainable(){ return this.bCanTrain; }
 
     public void Update(float fDelta){
-        if(iDragonHunger == 0) bCanTrain = false;
+        if(iDragonHunger <= 0){
+            bCanTrain = false;
+        }
         else bCanTrain = true;
     }
 
