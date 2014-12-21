@@ -1,6 +1,5 @@
 package com.mrskweek.testapp;
 
-import android.app.Activity;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
@@ -32,7 +31,7 @@ public class GameLoop extends Thread {
 
             //update all dragons
             for (int i = 0; i < 6; ++i) {
-                mainScreen.dragonsList[i].Update(mainScreen.gameTimer.GetDelta());
+                mainScreen.dragonsList[i].Update();
             }
 
 

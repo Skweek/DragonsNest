@@ -105,6 +105,7 @@
                 android:layout_height="wrap_content"
                 android:text="Feed Dragon"
                 android:id="@+id/button_feed"
+                android:tag="feedMenu"
                 android:onClick="FeedDragon"/>
         </TableRow>
 

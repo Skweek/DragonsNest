@@ -59,15 +59,18 @@ public class Dragon {
     public int GetHunger(){ return this.iDragonHunger; }
     public boolean GetTrainable(){ return this.bCanTrain; }
 
-    public void Update(float fDelta){
-        if(iDragonHunger <= 0){
-            bCanTrain = false;
-        }
+    public void Update(){
+        //can the dragon still be trained?
+        if(iDragonHunger <= 0) bCanTrain = false;
         else bCanTrain = true;
     }
 
-    public void Feed(){
-        this.iDragonHunger = this.iDragonHunger + 5;
+    public void Feed(int foodValue){
+
+        this.iDragonHunger = this.iDragonHunger + foodValue;
+        if(this.iDragonHunger > 100){
+            this.iDragonHunger = 100;
+        }
     }
 
 }
